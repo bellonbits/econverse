@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["@prisma/client", "prisma"],
+  serverExternalPackages: [
+    "@prisma/client",
+    "prisma",
+    "@libsql/client",
+    "@prisma/adapter-libsql",
+  ],
   webpack: (config) => {
     config.externals.push({
       "better-sqlite3": "commonjs better-sqlite3",
