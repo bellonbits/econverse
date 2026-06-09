@@ -1,0 +1,226 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id             String   @id @default(cuid())
+  name           String
+  age            Int      @default(22)
+  country        String   @default("United States")
+  education      String   @default("High School")
+  money          Float    @default(1000)
+  savings        Float    @default(0)
+  debt           Float    @default(0)
+  happiness      Float    @default(80)
+  health         Float    @default(100)
+  educationLevel Float    @default(1)
+  reputation     Float    @default(50)
+  netWorth       Float    @default(1000)
+  employment     String   @default("Student")
+  salary         Float    @default(0)
+  gameDay        Int      @default(1)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  businesses   Business[]
+  properties   Property[]
+  investments  Investment[]
+  loans        Loan[]
+  transactions Transaction[]
+  bankAccounts BankAccount[]
+  skills       PlayerSkill[]
+}
+
+model PlayerSkill {
+  id       String @id @default(cuid())
+  playerId String
+  player   Player @relation(fields: [playerId], references: [id])
+  name     String
+  level    Float  @default(1)
+  category String // finance, tech, business, social, health
+}
+
+model Economy {
+  id                 String   @id @default(cuid())
+  gdp                Float    @default(1000000000)
+  gdpGrowth          Float    @default(2.5)
+  inflation          Float    @default(2.5)
+  unemployment       Float    @default(5.0)
+  interestRate       Float    @default(3.5)
+  populationGrowth   Float    @default(1.2)
+  consumerConfidence Float    @default(75)
+  stockMarketIndex   Float    @default(10000)
+  housingIndex       Float    @default(100)
+  taxRevenue         Float    @default(0)
+  governmentSpending Float    @default(0)
+  tradeBalance       Float    @default(0)
+  gameDay            Int      @default(1)
+  createdAt          DateTime @default(now())
+}
+
+model Business {
+  id         String   @id @default(cuid())
+  playerId   String
+  player     Player   @relation(fields: [playerId], references: [id])
+  name       String
+  category   String
+  revenue    Float    @default(0)
+  expenses   Float    @default(0)
+  profit     Float    @default(0)
+  cashFlow   Float    @default(0)
+  customers  Int      @default(0)
+  inventory  Float    @default(1000)
+  level      Int      @default(1)
+  isActive   Boolean  @default(true)
+  price      Float    @default(10)
+  demand     Float    @default(50)
+  startCost  Float    @default(5000)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  employees Employee[]
+}
+
+model Employee {
+  id          String   @id @default(cuid())
+  businessId  String
+  business    Business @relation(fields: [businessId], references: [id])
+  name        String
+  role        String
+  skillLevel  Float    @default(1)
+  salary      Float
+  productivity Float   @default(1)
+  motivation  Float    @default(80)
+  experience  Float    @default(0)
+  hiredAt     DateTime @default(now())
+}
+
+model Property {
+  id            String   @id @default(cuid())
+  playerId      String
+  player        Player   @relation(fields: [playerId], references: [id])
+  name          String
+  type          String
+  purchasePrice Float
+  currentValue  Float
+  monthlyRent   Float    @default(0)
+  isRented      Boolean  @default(false)
+  city          String   @default("Metro City")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Investment {
+  id           String   @id @default(cuid())
+  playerId     String
+  player       Player   @relation(fields: [playerId], references: [id])
+  type         String
+  symbol       String
+  name         String
+  quantity     Float
+  buyPrice     Float
+  currentPrice Float
+  totalValue   Float
+  gainLoss     Float    @default(0)
+  gainLossPercent Float @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Loan {
+  id             String   @id @default(cuid())
+  playerId       String
+  player         Player   @relation(fields: [playerId], references: [id])
+  type           String
+  amount         Float
+  remaining      Float
+  interestRate   Float
+  monthlyPayment Float
+  termMonths     Int
+  paidMonths     Int      @default(0)
+  isPaid         Boolean  @default(false)
+  createdAt      DateTime @default(now())
+}
+
+model BankAccount {
+  id           String   @id @default(cuid())
+  playerId     String
+  player       Player   @relation(fields: [playerId], references: [id])
+  type         String
+  balance      Float    @default(0)
+  interestRate Float    @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Transaction {
+  id          String   @id @default(cuid())
+  playerId    String
+  player      Player   @relation(fields: [playerId], references: [id])
+  type        String
+  category    String
+  amount      Float
+  description String
+  balance     Float
+  gameDay     Int      @default(1)
+  createdAt   DateTime @default(now())
+}
+
+model Citizen {
+  id         String @id @default(cuid())
+  name       String
+  age        Int
+  income     Float
+  expenses   Float
+  savings    Float
+  employment String
+  happiness  Float
+  posX       Float  @default(0)
+  posZ       Float  @default(0)
+}
+
+model GameEvent {
+  id          String   @id @default(cuid())
+  type        String
+  title       String
+  description String
+  impacts     String
+  severity    Float    @default(1)
+  gameDay     Int      @default(1)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model Market {
+  id            String   @id @default(cuid())
+  symbol        String   @unique
+  name          String
+  type          String
+  price         Float
+  previousPrice Float    @default(0)
+  change        Float    @default(0)
+  changePercent Float    @default(0)
+  volume        Float    @default(0)
+  marketCap     Float    @default(0)
+  sector        String   @default("General")
+  updatedAt     DateTime @updatedAt
+}
+
+model Government {
+  id                 String   @id @default(cuid())
+  incomeTaxRate      Float    @default(22)
+  businessTaxRate    Float    @default(21)
+  salesTaxRate       Float    @default(8)
+  propertyTaxRate    Float    @default(1.2)
+  totalRevenue       Float    @default(0)
+  totalSpending      Float    @default(0)
+  deficit            Float    @default(0)
+  infrastructureScore Float   @default(70)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
