@@ -301,10 +301,10 @@ function CompoundCalculator({ economy }: { economy: any }) {
       </div>
       <div className="grid grid-cols-2 gap-4">
         {[
-          { label: "Initial Investment", value: principal, onChange: setPrincipal, prefix: "$" },
+          { label: "Initial Investment", value: principal, onChange: setPrincipal, prefix: "KSh" },
           { label: "Annual Return (%)", value: rate, onChange: setRate, suffix: "%" },
           { label: "Time Period (years)", value: years, onChange: setYears, suffix: "yrs" },
-          { label: "Monthly Contribution", value: monthly, onChange: setMonthly, prefix: "$" },
+          { label: "Monthly Contribution", value: monthly, onChange: setMonthly, prefix: "KSh" },
         ].map((f) => (
           <div key={f.label}>
             <label className="text-xs text-slate-400 block mb-1.5">{f.label}</label>

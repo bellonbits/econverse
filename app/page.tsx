@@ -24,7 +24,7 @@ const EDUCATION_LEVELS = [
 ];
 
 const STARTING_STATS = [
-  { label: "Starting Cash", value: "$1,000",   Icon: DollarSign, color: "from-emerald-500 to-teal-600"  },
+  { label: "Starting Cash", value: "KSh 1,000", Icon: DollarSign, color: "from-emerald-500 to-teal-600"  },
   { label: "Happiness",     value: "80/100",   Icon: Smile,      color: "from-yellow-500 to-orange-500" },
   { label: "Health",        value: "100/100",  Icon: Heart,      color: "from-red-500 to-pink-600"      },
   { label: "Reputation",    value: "50/100",   Icon: Star,       color: "from-purple-500 to-violet-600" },

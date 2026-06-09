@@ -8,18 +8,18 @@ export function cn(...inputs: ClassValue[]) {
 export function formatCurrency(amount: number, compact = false): string {
   if (compact) {
     if (Math.abs(amount) >= 1_000_000_000) {
-      return `$${(amount / 1_000_000_000).toFixed(2)}B`;
+      return `KSh ${(amount / 1_000_000_000).toFixed(2)}B`;
     }
     if (Math.abs(amount) >= 1_000_000) {
-      return `$${(amount / 1_000_000).toFixed(2)}M`;
+      return `KSh ${(amount / 1_000_000).toFixed(2)}M`;
     }
     if (Math.abs(amount) >= 1_000) {
-      return `$${(amount / 1_000).toFixed(1)}K`;
+      return `KSh ${(amount / 1_000).toFixed(1)}K`;
     }
   }
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("en-KE", {
     style: "currency",
-    currency: "USD",
+    currency: "KES",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(amount);
