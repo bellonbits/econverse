@@ -40,6 +40,9 @@ next-env.d.ts
 prisma/dev.db
 prisma/dev.db-journal
 
+# prisma local env
+prisma/.env
+
 # IDE
 .idea/
 .vscode/settings.json
