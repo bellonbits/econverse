@@ -12,17 +12,17 @@ import { getEconomyPhase, getEconomyHealthScore } from "@/lib/economy-engine";
 import {
   Gem, TrendingUp, Building2, CreditCard, Globe, Flame,
   Smile, Heart, BookOpen, Star, TrendingDown, BarChart3,
-  Briefcase, CheckCircle2, Zap,
+  Briefcase, CheckCircle2, Zap, type LucideIcon,
 } from "lucide-react";
 
 const FADE_UP = { initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.4 } };
 
-const PHASE_ICONS: Record<string, React.ElementType> = {
+const PHASE_ICONS: Record<string, LucideIcon> = {
   expansion: TrendingUp, boom: TrendingUp, recession: TrendingDown,
   contraction: TrendingDown, recovery: BarChart3, peak: BarChart3,
 };
 
-const TX_ICONS: Record<string, React.ElementType> = {
+const TX_ICONS: Record<string, LucideIcon> = {
   salary: Briefcase, expense: CreditCard, investment: TrendingUp,
   business: Building2, loan: Gem, default: BarChart3,
 };

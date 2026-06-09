@@ -7,7 +7,7 @@ import { formatCurrency } from "@/lib/utils";
 import { getEconomicPrinciple } from "@/lib/event-engine";
 import {
   Building2, Home, Store, Leaf, DollarSign, Key, BarChart3,
-  Landmark, Building, X, TrendingUp,
+  Landmark, Building, X, TrendingUp, type LucideIcon,
 } from "lucide-react";
 
 const PROPERTIES_FOR_SALE = [
@@ -19,7 +19,7 @@ const PROPERTIES_FOR_SALE = [
   { id: "land1",  name: "Development Land",     type: "land",       price: 75000,   rent: 0,    city: "Metro City", desc: "Undeveloped plot for future construction. Pure appreciation play.", appreciation: 6.5 },
 ];
 
-const TYPE_ICONS: Record<string, React.ElementType> = {
+const TYPE_ICONS: Record<string, LucideIcon> = {
   apartment: Building2, house: Home, commercial: Store, land: Leaf,
 };
 

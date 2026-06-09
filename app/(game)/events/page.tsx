@@ -7,7 +7,7 @@ import { getMentorExplanation } from "@/lib/event-engine";
 import { gameDayToDate } from "@/lib/utils";
 import {
   TrendingDown, TrendingUp, Flame, AlertTriangle, Sun, Rocket,
-  Building2, FileText, Swords, Wind, CheckCircle2, Zap, Bot, X,
+  Building2, FileText, Swords, Wind, CheckCircle2, Zap, Bot, X, type LucideIcon,
 } from "lucide-react";
 
 const SEVERITY_CONFIG = {
@@ -19,7 +19,7 @@ const SEVERITY_CONFIG = {
   6: { label: "Catastrophic", color: "text-red-600 border-red-700/30 bg-red-700/10",        dot: "bg-red-600"    },
 };
 
-const TYPE_ICONS: Record<string, React.ElementType> = {
+const TYPE_ICONS: Record<string, LucideIcon> = {
   recession: TrendingDown, boom: TrendingUp, crash: Flame, pandemic: AlertTriangle,
   drought: Sun, tech_boom: Rocket, housing_boom: Building2, policy_change: FileText,
   trade_war: Swords, natural_disaster: Wind,

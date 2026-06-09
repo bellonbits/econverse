@@ -10,7 +10,7 @@ import {
   BookOpen, Briefcase, Monitor, Activity, Users, GraduationCap,
   Brain, Book, ChefHat, BarChart3, DollarSign, Smile, Heart,
   Home, UtensilsCrossed, Car, Zap, Stethoscope, Gamepad2,
-  Lightbulb, ClipboardList, TrendingUp, Star,
+  Lightbulb, ClipboardList, TrendingUp, Star, type LucideIcon,
 } from "lucide-react";
 
 const LIFESTYLE_ACTIONS = [
@@ -26,7 +26,7 @@ const LIFESTYLE_ACTIONS = [
   { id: "invest_time", Icon: BarChart3, label: "Research Investments", description: "Become a better investor through research", cost: 0, timeHours: 2, effects: { educationLevel: 0.05, reputation: 2 }, category: "finance" },
 ];
 
-const EXPENSE_ICONS: Record<string, React.ElementType> = {
+const EXPENSE_ICONS: Record<string, LucideIcon> = {
   Food: UtensilsCrossed, Rent: Home, Transport: Car, Utilities: Zap, Healthcare: Stethoscope, Entertainment: Gamepad2,
 };
 
@@ -36,7 +36,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   lifestyle: "border-yellow-500/30 bg-yellow-500/10", finance: "border-cyan-500/30 bg-cyan-500/10",
 };
 
-const EFFECT_META: Record<string, { Icon: React.ElementType; label: string }> = {
+const EFFECT_META: Record<string, { Icon: LucideIcon; label: string }> = {
   educationLevel: { Icon: BookOpen, label: "Edu" },
   happiness: { Icon: Smile, label: "Happy" },
   health: { Icon: Heart, label: "Health" },

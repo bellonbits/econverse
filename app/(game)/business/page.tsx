@@ -9,10 +9,10 @@ import { formatCurrency, getCategoryColor } from "@/lib/utils";
 import {
   Building2, Users, ClipboardList, ArrowUp, Rocket, X,
   TrendingUp, TrendingDown, ArrowRight, Flame, BarChart3,
-  Store, Zap,
+  Store, Zap, type LucideIcon,
 } from "lucide-react";
 
-const BIZ_ICONS: Record<string, React.ElementType> = {
+const BIZ_ICONS: Record<string, LucideIcon> = {
   retail: Store, technology: Zap, food_service: Flame,
   manufacturing: Building2, consulting: BarChart3, real_estate: Building2,
 };
